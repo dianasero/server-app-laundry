@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "base64-image-upload": "^1.1.4",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "google-distance-matrix": "^1.1.1"
   }
 }
