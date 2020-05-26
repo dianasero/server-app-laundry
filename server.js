@@ -119,13 +119,13 @@ admin.initializeApp({
   databaseURL: "https://android-app-1182a.firebaseio.com"
 });
 
-var message = {
-  data: {
-    score: '850',
-    time: '2:45'
-  },
-  token: registrationToken
-};
+// var message = {
+//   data: {
+//     score: '850',
+//     time: '2:45'
+//   },
+//   token: registrationToken
+// };
 const notification_options = {
     priority: "high",
     timeToLive: 60 * 60 * 24
