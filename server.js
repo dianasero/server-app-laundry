@@ -79,7 +79,7 @@ function leer(path){
 }
 
 var distance = require('google-distance-matrix');
-distance.key('AIzaSyBREvDnnimfoMMfXQHYuerVt6HucSQZFW4');
+distance.key('');
 
 var origins = ['San Francisco CA', '40.7421,-73.9914'];
 var destinations = ['New York NY', 'Montreal', '41.8337329,-87.7321554', 'Honolulu'];
