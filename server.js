@@ -109,6 +109,48 @@ distance.matrix(origins, destinations, function (err, distances) {
     }
 });
 
+var admin = require("firebase-admin");
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+var serviceAccount = require("./serviceAccountKey.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://android-app-1182a.firebaseio.com"
+});
+
+var message = {
+  data: {
+    score: '850',
+    time: '2:45'
+  },
+  token: registrationToken
+};
+const notification_options = {
+    priority: "high",
+    timeToLive: 60 * 60 * 24
+  };
+// admin.messaging().send(message)
+//   .then((response) => {
+//     // Response is a message ID string.
+//     console.log('Successfully sent message:', response);
+//   })
+//   .catch((error) => {
+//     console.log('Error sending message:', error);
+//   });
+app.post('/firebase/notification', (req, res)=>{
+      const  registrationToken = req.body.registrationToken;
+      const message = req.body.message;
+      const options =  notification_options;
+      admin.messaging().sendToDevice(registrationToken, message, options)
+        .then( response => {
+         res.status(200).send("Notification sent successfully");
+        })
+        .catch( error => {
+            console.log(error);
+        });
+
+  })
 app.get('/', function (req, res) {
   res.send('Hello World!');
 });
